@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+
+
+
   root to: "pages#home"
+
+  devise_for :users
 
   get "/up/", to: "up#index", as: :up
   get "/up/databases", to: "up#databases", as: :up_databases

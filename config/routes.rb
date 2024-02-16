@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
 
   root to: "pages#home"
-
+  resources :users do
+    member do
+      get "/chat/:target_user_id", as: :chat, action: :chat, defaults: { format: :turbo_stream }
+    end
+  end
   devise_for :users
 
   get "/up/", to: "up#index", as: :up
